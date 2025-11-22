@@ -22,13 +22,13 @@ const handleResponse = async (response: Response) => {
 };
 
 export const apiRequest = async <T>(path: string, options: RequestOptions = {}): Promise<T> => {
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    ...(options.headers || {}),
+    ...(options.headers as Record<string, string> || {}),
   };
 
   if (options.token) {
-    headers.Authorization = `Bearer ${options.token}`;
+    headers['Authorization'] = `Bearer ${options.token}`;
   }
 
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -42,9 +42,9 @@ export const apiRequest = async <T>(path: string, options: RequestOptions = {}):
 };
 
 export const uploadRequest = async <T>(path: string, formData: FormData, token?: string | null): Promise<T> => {
-  const headers: HeadersInit = {};
+  const headers: Record<string, string> = {};
   if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    headers['Authorization'] = `Bearer ${token}`;
   }
 
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -57,9 +57,9 @@ export const uploadRequest = async <T>(path: string, formData: FormData, token?:
 };
 
 export const putUploadRequest = async <T>(path: string, formData: FormData, token?: string | null): Promise<T> => {
-  const headers: HeadersInit = {};
+  const headers: Record<string, string> = {};
   if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    headers['Authorization'] = `Bearer ${token}`;
   }
 
   const response = await fetch(`${API_BASE_URL}${path}`, {
