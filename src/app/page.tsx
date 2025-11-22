@@ -20,7 +20,7 @@ export default function Home() {
             Login to Dashboard
           </Link>
           <a
-            href="https://github.com/zikrabyte"
+            href="https://github.com/Deepsen7744/Real-Estate-Property-Management-Sharing-Tool_1"
             target="_blank"
             rel="noreferrer"
             className="btn-secondary px-8 py-3 text-base"
